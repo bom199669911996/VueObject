@@ -9,6 +9,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     { path: '/login', name: 'login', component: login }
+
   ]
 })
 // 导出router
