@@ -9,6 +9,7 @@ import Home from '@/views/home/home.vue'
 import Welcome from '@/views/welcome/welcome.vue'
 // 引入wrong组件
 import Wrong from '@/views/wrong/wrong.vue'
+
 // 注册为全局
 Vue.use(VueRouter)
 // 配置路由规则
