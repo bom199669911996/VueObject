@@ -4,41 +4,47 @@
             <div class="log" style="height:60px;" :class="{close:isCollapse}">
 
             </div>
+            <!-- 导航菜单的路由功能-是否使用 vue-router 的模式，
+            启用该模式会在激活导航时以 index 作为 path 进行路由跳转
+            1----在el-menu上增加router属性
+            2----把每一个el-menu-item 的index属性改成相应路由地址
+             -->
             <el-menu
 
-                default-active="1"
+                default-active="/"
                 :collapse-transition="false"
                 background-color="#002233"
                 text-color="#fff"
                 active-text-color="#ffd04b"
                 style="border-right:none"
                 :collapse="isCollapse"
+                router
             >
-                <el-menu-item index="1">
+                <el-menu-item index="/">
                     <i class="el-icon-s-home"></i>
                     <span slot="title">首页</span>
                 </el-menu-item>
-                <el-menu-item index="2">
+                <el-menu-item index="/content">
                     <i class="el-icon-menu"></i>
                     <span slot="title">内容管理</span>
                 </el-menu-item>
-                <el-menu-item index="3" >
+                <el-menu-item index="/image" >
                     <i class="el-icon-document"></i>
                     <span slot="title">素材管理</span>
                 </el-menu-item>
-                <el-menu-item index="4">
+                <el-menu-item index="/article">
                     <i class="el-icon-document-copy"></i>
                     <span slot="title">发布文章</span>
                 </el-menu-item>
-                 <el-menu-item index="4">
+                 <el-menu-item index="/comment">
                     <i class="el-icon-s-comment"></i>
                     <span slot="title">评论管理</span>
                 </el-menu-item>
-                 <el-menu-item index="4">
+                 <el-menu-item index="/fans">
                     <i class="el-icon-s-custom"></i>
                     <span slot="title">粉丝管理</span>
                 </el-menu-item>
-                 <el-menu-item index="4">
+                 <el-menu-item index="/settings">
                     <i class="el-icon-dessert"></i>
                     <span slot="title">个人设置</span>
                 </el-menu-item>

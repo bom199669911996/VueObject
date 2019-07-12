@@ -94,10 +94,12 @@ export default {
             //   这里的res是一个promise对象
               const { data } = res
               console.log(data)
+              // 2.记录登录状态
+              // 用sessionStorage来保存登录状态，浏览器关闭即token失效
+              window.sessionStorage.setItem('mytoken', JSON.stringify(res.data.data))
             }).catch(() => {
               this.$message.error('账户或者密码错误')
             })
-        // 2.记录登录状态
         }
       }
       )
