@@ -89,14 +89,16 @@ export default {
         //   如果登录成功
         if (valid) {
           //   1.跳转页面
-          this.axios.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+          this.axios.post('authorizations', this.loginForm)
             .then(res => {
             //   这里的res是一个promise对象
-              const { data } = res
-              console.log(data)
+              // const { data } = res
+              // console.log(data)
+
               // 2.记录登录状态
               // 用sessionStorage来保存登录状态，浏览器关闭即token失效
               window.sessionStorage.setItem('mytoken', JSON.stringify(res.data.data))
+              this.$router.push('/')
             }).catch(() => {
               this.$message.error('账户或者密码错误')
             })

@@ -6,7 +6,17 @@
 
 <script>
 export default {
-
+  mounted () {
+    this.getdatas()
+  },
+  methods: {
+    getdatas () {
+      this.axios.get(`articles`)
+        .then(res => {
+          console.log(res.data)
+        })
+    }
+  }
 }
 </script>
 
