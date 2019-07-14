@@ -85,26 +85,42 @@ export default {
   },
   methods: {
     login () {
-      this.$refs.loginForm.validate((valid) => {
-        //   如果登录成功
-        if (valid) {
-          //   1.跳转页面
-          this.axios.post('authorizations', this.loginForm)
-            .then(res => {
-            //   这里的res是一个promise对象
-              // const { data } = res
-              // console.log(data)
+      // this.$refs.loginForm.validate((valid) => {
+      //   //   如果登录成功
+      //   if (valid) {
+      //     //   1.跳转页面
+      //     this.axios.post('authorizations', this.loginForm)
+      //       .then(res => {
+      //       //   这里的res是一个promise对象
+      //         // const { data } = res
+      //         // console.log(data)
 
-              // 2.记录登录状态
-              // 用sessionStorage来保存登录状态，浏览器关闭即token失效
-              window.sessionStorage.setItem('mytoken', JSON.stringify(res.data.data))
-              this.$router.push('/')
-            }).catch(() => {
-              this.$message.error('账户或者密码错误')
-            })
+      //         // 2.记录登录状态
+      //         // 用sessionStorage来保存登录状态，浏览器关闭即token失效
+      //         window.sessionStorage.setItem('mytoken', JSON.stringify(res.data.data))
+      //         this.$router.push('/')
+      //       }).catch(() => {
+      //         this.$message.error('账户或者密码错误')
+      //       })
+      //   }
+      // }
+      // )
+      this.$refs.loginForm.validate(async valid => {
+        if (valid) {
+          // try{业务逻辑} catch(err){业务逻辑失败调用catch，进行错误处理}
+          try {
+            // 发送axios请求
+            const res = await this.axios.post('authorizations', this.loginForm)
+            // 记录登录标记
+            window.sessionStorage.setItem('mytoken', JSON.stringify(res.data.data))
+            // 跳转页面
+            this.$router.push('/')
+          } catch (err) {
+          //  运用错误element-ui 处理错误信息
+            this.$message.error('账户或者密码错误')
+          }
         }
-      }
-      )
+      })
     }
   }
 }
