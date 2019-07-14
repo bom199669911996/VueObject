@@ -60,15 +60,16 @@
                             style="vertical-align:middle"
                             width="30"
                             height="30"
-                            src="../../assets/images/avatar.jpg"
+                            :src='avatar'
                             alt=""
                         >
-                        <b style="vertical-align:middle;padding-left:5px">黑马小哥</b>
+                        <b style="vertical-align:middle;padding-left:5px">{{name}}</b>
                         <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
-                        <el-dropdown-item icon="el-icon-unlock">退出登录</el-dropdown-item>
+                        <!-- 通过.nactive获取dom -->
+                        <el-dropdown-item icon="el-icon-setting" @click.native="setting()">个人设置</el-dropdown-item>
+                        <el-dropdown-item icon="el-icon-unlock" @click.native="logout()">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </el-header>
@@ -83,12 +84,34 @@
 export default {
   data () {
     return {
-      isCollapse: false
+      isCollapse: false,
+      avatar: '',
+      name: ''
+
     }
+  },
+  created () {
+    //   获取用户登录信息
+    const usermes = JSON.parse(window.sessionStorage.getItem('mytoken'))
+    // console.log(usermes)
+    this.avatar = usermes.photo
+    this.name = usermes.name
   },
   methods: {
     qiehuan () {
       this.isCollapse = !this.isCollapse
+    },
+    setting () {
+      // 跳转到setting
+      this.$router.push('/setting')
+    },
+    logout () {
+      // 退出登录--清楚token信息
+    // window.sessionStorage.setItem('mytoke',null)
+    // 直接移除
+      window.sessionStorage.removeItem('mytoke')
+      //   跳转回login页面
+      this.$router.push('/login')
     }
   }
 }

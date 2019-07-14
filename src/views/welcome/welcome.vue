@@ -13,7 +13,7 @@ export default {
     getdatas () {
       this.axios.get(`articles`)
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
         })
     }
   }
