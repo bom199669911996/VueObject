@@ -9,7 +9,8 @@ import Home from '@/views/home/home.vue'
 import Welcome from '@/views/welcome/welcome.vue'
 // 引入wrong组件
 import Wrong from '@/views/wrong/wrong.vue'
-
+// 引入article样式
+import Article from '@/views/article/article.vue'
 // 注册为全局
 Vue.use(VueRouter)
 // 配置路由规则
@@ -22,7 +23,8 @@ const router = new VueRouter({
       name: 'home',
       component: Home,
       children: [
-        { path: '/', name: 'welcome', component: Welcome }
+        { path: '/', name: 'welcome', component: Welcome },
+        { path: '/article', name: 'article', component: Article }
       ]
     },
     // 当请求一个路径，去匹配你定义好的路由规则，如果没有对应的规则，此时认为是404请求

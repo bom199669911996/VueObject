@@ -9,9 +9,10 @@
             1----在el-menu上增加router属性
             2----把每一个el-menu-item 的index属性改成相应路由地址
              -->
+             <!-- 切换路由 应该有对应的样式，不能写成一个默认样式 -->
             <el-menu
 
-                default-active="/"
+                :default-active="$route.path"
                 :collapse-transition="false"
                 background-color="#002233"
                 text-color="#fff"
