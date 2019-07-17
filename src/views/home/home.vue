@@ -33,7 +33,7 @@
                     <i class="el-icon-document"></i>
                     <span slot="title">素材管理</span>
                 </el-menu-item>
-                <el-menu-item index="/article">
+                <el-menu-item index="/public">
                     <i class="el-icon-document-copy"></i>
                     <span slot="title">发布文章</span>
                 </el-menu-item>

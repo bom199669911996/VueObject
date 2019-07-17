@@ -8,16 +8,26 @@
 //   Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem('mytoken')).token
 // }
 
-// Vue.prototype.axios = axios
-
+// 引入json-bigint
+import JSONBig from 'json-bigint'
 // 自定义实例默认值
 // aixos的提取与封装
 
 // // 引入axios
 import axios from 'axios'
+// Vue.prototype.axios = axios
 // 创建实例时设置配置的默认值
 const instance = axios.create({
-  baseURL: 'http://ttapi.research.itcast.cn/mp/v1_0/'
+  baseURL: 'http://ttapi.research.itcast.cn/mp/v1_0/',
+  // 解决js最大数值的问题，自己修改axios的默认转换方式
+  // 处理格式：data可能没有数据 为null ，JSONBig会报错
+  transformResponse: [ (data) => {
+    // 对 data 进行任意转换处理
+    if (data) {
+      return JSONBig.parse(data)
+    }
+    return data
+  }]
 
 })
 // 添加请求拦截器
@@ -49,7 +59,8 @@ instance.interceptors.response.use(function (response) {
   // 对响应错误做点什么
   // 如果响应状态码是401 拦截到登录页面
   // console.log(error.response)
-  if (error.response.status === 401) {
+  // 获取响应状态码的时候也需要严瑾处理
+  if (error.response && error.response.status === 401) {
     // hash是location提供的获取操作，地址栏的#后的地址属性
     location.hash = '#/login'
   }
