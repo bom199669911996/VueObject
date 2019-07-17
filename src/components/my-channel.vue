@@ -24,7 +24,7 @@ export default {
     async getData () {
       const {
         data: { data }
-      } = await this.$http.get('channels')
+      } = await this.axios.get('channels')
       this.options = data.channels
     }
   }

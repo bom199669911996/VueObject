@@ -13,6 +13,8 @@ import Wrong from '@/views/wrong/wrong.vue'
 import Content from '@/views/content/content.vue'
 // 引入images样式
 import Images from '@/views/images/images.vue'
+// 引入public样式
+import Public from '@/views/public/public.vue'
 // 注册为全局
 Vue.use(VueRouter)
 // 配置路由规则
@@ -22,12 +24,14 @@ const router = new VueRouter({
   routes: [
     { path: '/login', name: 'login', component: login },
     { path: '/',
-      name: 'home',
+
       component: Home,
       children: [
         { path: '/', name: 'welcome', component: Welcome },
         { path: '/content', name: 'content', component: Content },
-        { path: '/images', name: 'images', component: Images }
+        { path: '/images', name: 'images', component: Images },
+        { path: '/public', name: 'public', component: Public }
+
       ]
     },
     // 当请求一个路径，去匹配你定义好的路由规则，如果没有对应的规则，此时认为是404请求

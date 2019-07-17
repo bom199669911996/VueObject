@@ -10,6 +10,8 @@ import components from '@/components'
 import router from '@/router'
 // 引入axios
 import axios from '@/api/axios.js'
+// 引入公共样式表上传图片样式表
+import '@/styles/index.less'
 Vue.use(components)
 // 变成全局axios
 Vue.prototype.axios = axios
