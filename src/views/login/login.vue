@@ -66,7 +66,7 @@ export default {
     return {
       checked: true,
       loginForm: {
-        mobile: '15933333333',
+        mobile: '13911111111',
         code: '246810'
       },
       loginrRules: {
